@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="bg-blue-400 py-5 mb-10 text-white flex justify-center  ">
+    <header className="bg-blue-400 py-5 mb-10 text-white w-screen flex justify-center  ">
       <div className="flex gap-5 items-center">
         <figure>
           <svg
