@@ -5,7 +5,7 @@ import Header from '../components/Header';
 const HomePage = () => {
   return (
     <>
-    <Header/>
+  
     <div className='text-center '>
       <p>this is common interview question are there each language contains 60 question . let's test your level</p>
     </div>
