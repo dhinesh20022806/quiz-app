@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import defaultTheme from 'tailwindcss/defaultConfig'
+import defaultTheme from 'tailwindcss/defaultTheme'
 export default {
   content: [
     "./index.html",
@@ -11,6 +11,10 @@ export default {
         'xs':'475px',
         'xxs':'200px',
         ...defaultTheme.screens,
+      },
+      fontFamily:{
+        lato:['"Lato"',...defaultTheme.fontFamily.sans],
+        abrilFatface:['"Abril Fatface"', ...defaultTheme.fontFamily.sans]
       }
     },
   },

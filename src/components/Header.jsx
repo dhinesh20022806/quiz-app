@@ -19,7 +19,7 @@ const Header = () => {
             />
           </svg>
         </figure>
-        <h1 className="capitalize  text-right sm:text-md xxs:text-4xl  md:text-[4rem] font-extrabold ">
+        <h1 className="capitalize  text-right sm:text-md xxs:text-4xl  md:text-[4rem] font-extrabold font-lato ">
           Common interview question
         </h1>
       </div>
