@@ -1,5 +1,5 @@
-import { useState , useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import { useState , useEffect, Suspense } from 'react';
+import {Await, useParams} from 'react-router-dom';
 import Quiz from '../components/Quiz';
 
 const languageMap = {
@@ -23,15 +23,20 @@ const QuizPage = () => {
         const loadQuestions = async () => {
             if (params.programmingID && languageMap[params.programmingID]) {
                 const module = await languageMap[params.programmingID]();
-                setQuestions(module.default);
+                setTimeout(()=>{
+                    setQuestions(module.default);
+
+                }, 10 * 1000)
             }
         };
         
         loadQuestions();
     }, [params.programmingID]);
     
+    console.log(questions, 'from page');
   return (
-<Quiz questions={questions}/>
+    <Quiz questions={questions}/>
+  
   )
 }
 
