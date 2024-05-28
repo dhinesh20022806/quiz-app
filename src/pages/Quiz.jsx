@@ -1,5 +1,6 @@
 import { useState , useEffect } from 'react';
 import {useParams} from 'react-router-dom';
+import Quiz from '../components/Quiz';
 
 const languageMap = {
     nodejs : () => import('../questions/nodejs_questions'),
@@ -30,18 +31,7 @@ const QuizPage = () => {
     }, [params.programmingID]);
     
   return (
-   <>
-   <div>
-   <ul>
-    {questions.map(question =>{
-        return <li key={question.id}>
-            <p>{question.text}</p>
-        </li>
-    } )}
-   </ul>
-   </div>
-
-   </>
+<Quiz questions={questions}/>
   )
 }
 

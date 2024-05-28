@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Quiz = () => {
+const Quiz = ({questions}) => {
   return (
-    <div>Quiz</div>
+    <div className='w-[50vw] bg-green-600 h-[50vh] rounded-lg mx-auto my-[5%]'>
+   </div>
   )
 }
 
