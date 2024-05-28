@@ -3,8 +3,14 @@ import ProgressBar from "./ProgressBar";
 import Answer from "./Answer";
 import { Navigate, useNavigate } from "react-router-dom";
 
+// FIXME timer key not working 
+
 const Quiz = ({ questions, path }) => {
   const [userAnswer, setUserAnswer] = useState([]);
+  const [verifyAnswer, setVerifyAnswer] = useState({
+    selectedAnswer:undefined,
+    isCorrect:null,
+  })
 
   let timer = 15 * 1000;
 
@@ -14,17 +20,49 @@ const Quiz = ({ questions, path }) => {
   console.log(activeQuestionIndex);
 
   const handleAnswer = (answer) => {
+
+    setTimeout(()=>{
+      setVerifyAnswer({
+        selectedAnswer:answer,
+        isCorrect:null
+      })
+
+      setTimeout(()=>{
+          setVerifyAnswer({
+            selectedAnswer:answer,
+            isCorrect: questions[activeQuestionIndex].answers[0] === answer,
+          })
+
+          setUserAnswer((prev) => {
+            return [...prev, answer];
+          });
+          
+      }, 8 * 1000)
+
+    }, 5 * 1000)
     console.log(answer);
-    setUserAnswer((prev) => {
-      return [...prev, answer];
-    });
+    
   };
+
+  const handleSkipAnswer = ()=>{
+    setUserAnswer(prev => {
+      return ([...prev, null])
+    })
+  }
 
   if ( activeQuestionIndex === 0 && !questions[activeQuestionIndex]) {
     return <p>LOading...</p>;
   }
   if (activeQuestionIndex > 0 && activeQuestionIndex === questions.length){
     return naviagte(`/${path}/summary`)
+  }
+
+  if(verifyAnswer.selectedAnswer !== undefined && verifyAnswer.isCorrect === null ){
+    timer = 5 * 1000;
+  }
+
+  if(verifyAnswer.selectedAnswer !== undefined && verifyAnswer.isCorrect !== null){
+    timer = 8 * 1000;
   }
   console.log(userAnswer);
 
@@ -35,7 +73,7 @@ const Quiz = ({ questions, path }) => {
           <ProgressBar
             key={activeQuestionIndex}
             timer={timer}
-            onSkip={() => handleAnswer(null)}
+            onSkip={handleSkipAnswer}
           />
         )}
       </div>
@@ -47,7 +85,7 @@ const Quiz = ({ questions, path }) => {
         <Answer
           answers={questions[activeQuestionIndex]?.answers}
           onClick={handleAnswer}
-          onSkip={() => handleAnswer(null)}
+          onSkip={handleSkipAnswer}
         />
       </div>
     </div>
