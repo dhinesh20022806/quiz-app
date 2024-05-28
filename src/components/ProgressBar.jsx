@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 
 const ProgressBar = ({timer, onSkip }) => {
     const [remainingTime, setRemainingTime] = useState(timer);
-    console.log(remainingTime);
    
     useEffect(()=>{
         const intervalTimer = setInterval(()=>{
@@ -30,7 +29,7 @@ const ProgressBar = ({timer, onSkip }) => {
   
 
   return (
-    <progress className='w-[100%] rounded-md' value={remainingTime} max={timer}   />
+    <progress  value={remainingTime} max={timer}   />
 )
 }
 

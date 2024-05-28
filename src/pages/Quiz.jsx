@@ -23,10 +23,10 @@ const QuizPage = () => {
         const loadQuestions = async () => {
             if (params.programmingID && languageMap[params.programmingID]) {
                 const module = await languageMap[params.programmingID]();
-                setTimeout(()=>{
+               
                     setQuestions(module.default);
 
-                }, 5 * 1000)
+               
             }
         };
         
@@ -35,7 +35,7 @@ const QuizPage = () => {
     
     console.log(questions, 'from page');
   return (
-    <Quiz questions={questions}/>
+    <Quiz questions={questions} path={params.programmingID} />
   
   )
 }

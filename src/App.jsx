@@ -4,13 +4,15 @@ import HomePage from "./pages/Home";
 import RootLayout from "./pages/RootLayout";
 import QuizPage from "./pages/Quiz";
 import ErrorPage from "./pages/Error";
+import SummaryPage from './pages/Summary'
 
 const router = createBrowserRouter([{
   path:'/',element:<RootLayout/>,
   errorElement:<ErrorPage/>,
   children:[
     {path:'', element:<HomePage/>},
-    {path:':programmingID/quiz' , element:<QuizPage/>}
+    {path:':programmingID/quiz' , element:<QuizPage/>},
+    {path:':programmingID/summary',element:<SummaryPage/>}
   ],
 
 }])
