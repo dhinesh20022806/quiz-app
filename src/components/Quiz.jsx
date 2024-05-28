@@ -18,17 +18,18 @@ const Quiz = ({ questions }) => {
   if(!questions[activeQuestion]){
     return <p>LOading...</p>
   }
+  console.log(userAnswer);
 
   return (
-    <div className="w-[50vw]  p-5 min-w-[375px] bg-green-600 h-[50vh] rounded-lg mx-auto my-[5%]">
+    <div className="xs:max-w-[50vw] xxs:max-w-[300px] py-5 xs:px-5 xxs:px-2 min-w-[375px] bg-green-600  min-h-[45vh] rounded-lg mx-auto my-[5%]">
       <div className="w-[90%] mx-auto py-10">
      
-      {/* {!!questions[activeQuestion]?.text &&  <ProgressBar key={activeQuestion} timer={15 * 1000  } /> } */}
+      {!!questions[activeQuestion]?.text &&  <ProgressBar key={activeQuestion} timer={15 * 1000  } onSkip={()=> handleAnswer(null)}/> }
       </div>
       <div>
-       <h1 className="text-xl font-lato font-bold tracking-wide">{questions[activeQuestion]?.text || 'loading..' }</h1>
+       <h1 className="text-2xl  text-center mb-5 font-lato font-black text-white tracking-wide">{questions[activeQuestion]?.text || 'loading..' }</h1>
 
-       <Answer answers={questions[activeQuestion]?.answers} onClick={handleAnswer}/>
+       <Answer answers={questions[activeQuestion]?.answers} onClick={handleAnswer} onSkip={()=> handleAnswer(null)}/>
       </div>
     </div>
   );

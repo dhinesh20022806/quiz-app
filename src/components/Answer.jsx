@@ -1,18 +1,24 @@
 import React from "react";
 
-const Answer = ({ answers, onClick }) => {
+const Answer = ({ answers, onClick, onSkip }) => {
   return (
-    <ul className="bg-gray-500 space-y-3 p-2 w-[80%] h-[80%] ">
+   <div className="flex flex-col ">
+     <ul >
       {answers.map((answer) => (
-        <li
-        className="flex justify-center"
-          
-          key={answer}
-        >
-          <button className="bg-gray-200 p-3 rounded-3xl w-[80%] hover:bg-gray-800 hover:text-white text-xl font-abrilFatface " onClick={() => onClick(answer)}>{answer}</button>
+        <li className="flex justify-center" key={answer}>
+          <button
+            className="bg-gray-200 px-4 h-20 flex-1   py-2  mb-2 rounded-3xl  hover:bg-gray-800 hover:text-white text-2xl font-abrilFatface "
+            onClick={() => onClick(answer)}
+          >
+            {answer}
+          </button>
         </li>
       ))}
     </ul>
+    <div className="flex xs:justify-end xxs:justify-center">
+        <button onClick={onSkip} className="w-20 h-20 bg-white  rounded-xl text-xl text-black  ">skip</button>
+    </div>
+   </div>
   );
 };
 

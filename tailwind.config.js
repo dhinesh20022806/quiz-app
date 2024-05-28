@@ -9,7 +9,7 @@ export default {
     extend: {
       screens:{
         'xs':'475px',
-        'xxs':'200px',
+        'xxs':'360px',
         ...defaultTheme.screens,
       },
       fontFamily:{
