@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-const ProgrammingBox = ({ image, title, cssClass }) => {
+const ProgrammingBox = ({ image, title, cssClass , link}) => {
   return (
-    <Link to={`/${title}/quiz`}
+    <Link to={`/${link}/quiz`}
       className={` transition-all transform flex flex-col justify-center    xs:scale-50 xs:hover:scale-75 xxs:scale-50  md:scale-50  ${cssClass}  h-[40vh] shadow-2xl relative rounded-2xl text-white`}
     >
       <p className="text-2xl uppercase font-bold text-center  ">{title}</p>

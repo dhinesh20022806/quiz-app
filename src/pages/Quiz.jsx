@@ -10,7 +10,7 @@ const languageMap = {
     mongodb:() => import('../questions/mongodb_questions'),
     js:() => import('../questions/js_questions'),
     reactjs:() => import('../questions/reactjs_questions'),
-    angularjs:()=> import('../questions/angularjs_questions');
+    angularjs:()=> import('../questions/angularjs_questions')
 }
 
 

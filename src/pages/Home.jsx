@@ -1,6 +1,6 @@
 import React from 'react'
 import ProgrammingBox from "../components/ProgrammingBox";
-const {programmingLanguages} = await import('../indexQuestion')
+const {programmingLanguages} = await import('../languageData')
 import Header from '../components/Header';
 const HomePage = () => {
   return (
