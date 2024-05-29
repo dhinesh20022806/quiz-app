@@ -1,5 +1,5 @@
-import { useState , useEffect, Suspense } from 'react';
-import {Await, useParams} from 'react-router-dom';
+import { useState , useEffect} from 'react';
+import { useParams} from 'react-router-dom';
 import Quiz from '../components/Quiz';
 
 const languageMap = {
