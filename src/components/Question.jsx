@@ -1,16 +1,64 @@
-import React from 'react';
+import  { useState } from 'react';
 import ProgressBar from './ProgressBar';
 import Answer from './Answer';
 
-const Question = () => {
+const Question = ({activeQuestionIndex, questions,handleSkipAnswer, handleUserAnswer }) => {
+  const [verifyAnswer, setVerifyAnswer] = useState({
+    selectedAnswer: "",
+    isCorrect: null,
+  });
+
+  let timer = 15 * 1000;
+
+  const handleAnswer = answer => {
+    setVerifyAnswer({
+      selectedAnswer: answer,
+      isCorrect: null,
+    });
+
+    setTimeout(() => {
+      setVerifyAnswer({
+        selectedAnswer: answer,
+        isCorrect:
+          questions[activeQuestionIndex].answers[0] === answer,
+      });
+
+      setTimeout(() => {
+        setVerifyAnswer({
+          selectedAnswer: "",
+          isCorrect: null,
+        });
+
+        handleUserAnswer(answer)
+
+       
+      }, 8 * 1000);
+    }, 5 * 1000);
+    console.log(answer);
+  };
+
+  if (
+    verifyAnswer.selectedAnswer !== undefined &&
+    verifyAnswer.isCorrect === null
+  ) {
+    timer = 5 * 1000;
+  }
+
+  if (
+    verifyAnswer.selectedAnswer !== undefined &&
+    verifyAnswer.isCorrect !== null
+  ) {
+    timer = 8 * 1000;
+  }
+
   return (
     <>
       <div className="w-[90%] mx-auto py-10">
         {!!questions[activeQuestionIndex]?.text && (
           <ProgressBar
-            key={activeQuestionIndex}
+            key={timer}
             timer={timer}
-            onSkip={handleSkipAnswer}
+            onSkip={verifyAnswer.selectedAnswer === "" ?  handleSkipAnswer : null}
           />
         )}
       </div>
@@ -20,9 +68,11 @@ const Question = () => {
         </h1>
 
         <Answer
+        key={questions[activeQuestionIndex]?.text}
           answers={questions[activeQuestionIndex]?.answers}
           onClick={handleAnswer}
           onSkip={handleSkipAnswer}
+          selectedAnswer={verifyAnswer.selectedAnswer}
         />
       </div>
     </>
