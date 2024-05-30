@@ -1,10 +1,14 @@
-import React from 'react';
+import {useRef} from 'react';
 
 const Answer = ({ handleUserAnswer, answers, answerState, selectedAnswer }) => {
-    const shuffledAnswer = [...answers].sort(()=> Math.random() - 0.5)
+    const shuffledAnswer = useRef()
+    if(!shuffledAnswer.current){
+         shuffledAnswer.current = [...answers].sort(()=> Math.random() - 0.5)
+
+    }
   return (
     <ul className="flex flex-col gap-5 justify-center   ">
-      {shuffledAnswer.map(answer => {
+      {shuffledAnswer.current.map(answer => {
         let cssClass = 'w-full font-bold  h-[50px] bg-blue-950 hover:bg-blue-200 hover:text-blue-950 px-2 py-1 rounded-full text-[1.6rem]';
        
        if(answer === selectedAnswer){

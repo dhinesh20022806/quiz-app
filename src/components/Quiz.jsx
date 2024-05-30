@@ -11,12 +11,12 @@ const Quiz = ({ questions, path }) => {
   
   const activeQuestionIndex = userAnswer.length;
 
-  const handleUserAnswer = answer => {
+  const handleUserAnswer = useCallback(answer => {
     setUserAnswer(prev => {
         return [...prev, answer]
     })
    
-  };
+  },[])
 
   const handleSkip = useCallback(()=>{
     setUserAnswer(prev => {

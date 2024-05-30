@@ -54,7 +54,7 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer}) => {
     <ProgressBar
       key={timer}
         timer={timer}
-        handleSkip={handleSkip}
+        handleSkip={answerState === '' ? handleSkip : null }
         answerState={answerState}
       />
 
@@ -64,7 +64,6 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer}) => {
 
       <div className="h-[250px]">
         <Answer
-       
           handleUserAnswer={handleAnswer}
           answers={currentQuestion.answers}
           answerState={answerState}
