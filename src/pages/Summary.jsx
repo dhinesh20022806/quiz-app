@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useRouteLoaderData } from 'react-router-dom'
 import Summary from '../components/Summary'
 
 const SummaryPage = () => {
+  const questions = useRouteLoaderData('question-programmingLanguage');
+  console.log(questions);
   return (
-   <Summary/>
+   <Summary questions={questions}/>
   )
 }
 

@@ -9,28 +9,44 @@ import QuizPage, {
 } from './pages/Quiz';
 import ErrorPage from './pages/Error';
 import SummaryPage from './pages/Summary';
+import UserAnswerContextProvider from './store/user-answer-context';
+import QuizLayout from './pages/QuizLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+  
     children: [
-      { path: '', element: <HomePage /> },
+      { index:true, element: <HomePage /> },
       {
-        path: ':programmingID/quiz',
-        element: <QuizPage />,
-        loader: questionsLoader,
+        path: ':programmingID',
+        element: <QuizLayout />,
+        id:'question-programmingLanguage',
+        loader:questionsLoader,
+        children:[
+          {
+            index:true,
+            element : <QuizPage/>
+
+          },
+          {
+            path: 'summary',
+            element: <SummaryPage />,
+          },
+
+        ]
+       
       },
-      {
-        path: ':programmingID/summary',
-        element: <SummaryPage />,
-      },
+      
     ],
   },
 ]);
 const App = () => {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (<UserAnswerContextProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </UserAnswerContextProvider>);
 };
 
 export default App;

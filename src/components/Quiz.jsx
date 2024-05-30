@@ -1,9 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {UserAnswerCtx} from '../store/user-answer-context'
 
 import Question from './Question';
 const Quiz = ({ questions, path }) => {
-  const [userAnswer, setUserAnswer] = useState([]);
+  
+  const {userAnswer, handleSkip, handleUserAnswer } = useContext(UserAnswerCtx)
   
 
   const navigate = useNavigate();
@@ -11,40 +13,34 @@ const Quiz = ({ questions, path }) => {
   
   const activeQuestionIndex = userAnswer.length;
 
-  const handleUserAnswer = useCallback(answer => {
-    setUserAnswer(prev => {
-        return [...prev, answer]
-    })
-   
-  },[])
-
-  const handleSkip = useCallback(()=>{
-    setUserAnswer(prev => {
-      return [...prev, null]
-    })
-  },[])
+ 
 
   
 
   const currentQuestion = questions[activeQuestionIndex];
 
-  if(questions.length !== userAnswer.length){
+  if(questions.length === userAnswer.length){
     navigate(`${path}/summary`)
   }
   console.log(userAnswer);
 
   console.log('%cparent re rendering' , "color:red; border: 1px solid red;");
   return (
-    <div className="w-3/6 min-w-[350px] p-5 mx-auto bg-[#4169e1] h-[50rem] space-y-14 rounded-3xl text-[#dfdcdc] ">
+   <>
+     <div className="w-3/6 min-w-[350px]  mx-auto bg-[#4169e1] h-[55rem] p-5 space-y-14 rounded-3xl text-[#dfdcdc]  ">
       <Question 
       key={activeQuestionIndex}
       handleSkip={handleSkip}
     currentQuestion={currentQuestion}
     handleUserAnswer={handleUserAnswer}
+    questions={questions}
 
 
       />
+     
     </div>
+    
+   </>
   );
 };
 

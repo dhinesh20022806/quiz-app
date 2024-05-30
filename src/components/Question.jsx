@@ -1,8 +1,12 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import Answer from './Answer';
 import ProgressBar from './ProgressBar';
+import { UserAnswerCtx } from '../store/user-answer-context';
 
-const Question = ({handleSkip,currentQuestion , handleUserAnswer}) => {
+
+const Question = ({handleSkip,currentQuestion , handleUserAnswer, questions}) => {
+
+  const {userAnswer} = useContext(UserAnswerCtx)
     const [answer, setAnswer] = useState({
         selectedAnswer:'',
         isCorrect:null,
@@ -62,14 +66,22 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer}) => {
         {currentQuestion.text}
       </h1>
 
-      <div className="h-[250px]">
+      <div className="">
         <Answer
           handleUserAnswer={handleAnswer}
           answers={currentQuestion.answers}
           answerState={answerState}
           selectedAnswer={answer.selectedAnswer}
         />
+        
       </div>
+     
+      <div className='flex justify-center items-center   '>
+      <p className=' text-white  bg-blue-950 px-6 py-4 rounded-lg ' >
+          {userAnswer.length} / {questions.length}
+        </p>
+      </div>
+
    </>
   )
 }

@@ -1,5 +1,6 @@
 import ProgrammingBox from '../components/ProgrammingBox';
 const { programmingLanguages } = await import('../languageData');
+
 const HomePage = () => {
   return (
     <>

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import {
   useParams,
-  useLoaderData,
+  useRouteLoaderData,
   Await,
   json,
 } from 'react-router-dom';
@@ -21,7 +21,8 @@ const languageMap = {
 
 const QuizPage = () => {
   const params = useParams();
-  const questions = useLoaderData();
+  const questions = useRouteLoaderData('question-programmingLanguage');
+  console.log(questions);
 
   return (
     <Suspense fallback={<p className="text-center">loading</p>}>
@@ -46,6 +47,8 @@ export async function loader({ params }) {
     languageMap[params.programmingID]
   ) {
     const module = await languageMap[params.programmingID]();
+    console.log('from loader');
+    console.log(module.default);
 
     return module.default;
   }
