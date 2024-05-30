@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 const Answer = ({ answers, onClick, onSkip, selectedAnswer }) => {
@@ -5,9 +6,18 @@ const Answer = ({ answers, onClick, onSkip, selectedAnswer }) => {
   console.log(answers,  'hey');
   const shuffleAnswers = [...answers].sort(()=> Math.random() - 0.5);
 
+=======
+import {useRef} from 'react';
+>>>>>>> experment
 
+const Answer = ({ handleUserAnswer, answers, answerState, selectedAnswer }) => {
+    const shuffledAnswer = useRef()
+    if(!shuffledAnswer.current){
+         shuffledAnswer.current = [...answers].sort(()=> Math.random() - 0.5)
 
+    }
   return (
+<<<<<<< HEAD
    <div className="flex flex-col ">
      <ul >
       {shuffleAnswers.map((answer) => {
@@ -37,12 +47,40 @@ const Answer = ({ answers, onClick, onSkip, selectedAnswer }) => {
           </button>
         </li>
       )
+=======
+    <ul className="flex flex-col gap-5 justify-center   ">
+      {shuffledAnswer.current.map(answer => {
+        let cssClass = 'w-full font-bold  h-[50px] bg-blue-950 hover:bg-blue-200 hover:text-blue-950 px-2 py-1 rounded-full text-[1.6rem]';
+       
+       if(answer === selectedAnswer){
+        if (answerState === 'selected') {
+         cssClass = 'w-full font-bold  h-[50px] bg-white text-blue-950 px-2 py-1 rounded-full text-[1.6rem]';
+            
+          
+        }
+        else if(answerState === 'correct'){
+            cssClass = 'w-full font-bold  h-[50px] bg-green-500 text-white px-2 py-1 rounded-full text-[1.6rem]';
+
+        }
+        else if(answerState === 'wrong'){
+            cssClass = 'w-full font-bold  h-[50px] bg-red-500 text-white px-2 py-1 rounded-full text-[1.6rem]';
+        }
+       }
+
+        return (
+          <li className="flex " key={answer}>
+            <button
+              disabled={answerState !== ''}
+              onClick={() => handleUserAnswer(answer)}
+              className={cssClass}
+            >
+              {answer}
+            </button>
+          </li>
+        );
+>>>>>>> experment
       })}
     </ul>
-    <div className="flex xs:justify-end xxs:justify-center">
-        <button onClick={onSkip} className="w-20 h-20 bg-white  rounded-xl text-xl text-black  ">skip</button>
-    </div>
-   </div>
   );
 };
 

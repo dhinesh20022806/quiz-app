@@ -1,40 +1,39 @@
-import {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
-const ProgressBar = ({timer, onSkip }) => {
+
+const ProgressBar = ({timer, handleSkip, answerState}) => {
     const [remainingTime, setRemainingTime] = useState(timer);
    
-   
+      
     useEffect(()=>{
-        const intervalTimer = setInterval(()=>{
-           setRemainingTime(prev => prev - 100)
-
-        }, 100);
-
+        console.log('SETTING INTERVAL');
+      const timeInterval =  setInterval(()=>{
+          setRemainingTime(perv => perv - 100)
+        }, 100)
+       
+        
         return ()=>{
-            console.log('CLEAR INTERVAL');
-            clearInterval(intervalTimer)
-          
+            console.log('login from clear interval');
+            clearInterval(timeInterval)
         }
+
+
     },[])
 
     useEffect(()=>{
-        console.log('SETTING TIMEOUT');
-        const timeOut = setTimeout(()=>{
-            onSkip();
-        }, timer)
+        console.log('SETTING timeout');
+        const timeOut = setTimeout(handleSkip,timer)
 
-        return ()=>{
-            console.log('CLEAR TIMEOUT');
+        return() => {
+            console.log('%clogin from clear time out', 'color:red;' );
             clearTimeout(timeOut)
         }
-    },[timer, onSkip])
-    
 
-  
+    },[timer,handleSkip])
 
   return (
-    <progress  value={remainingTime} max={timer}   />
-)
+   <progress className={answerState === 'selected' ? 'active' : ''} max={timer} value={remainingTime} />
+  )
 }
 
 export default ProgressBar
