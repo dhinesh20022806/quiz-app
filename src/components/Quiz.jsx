@@ -28,7 +28,7 @@ const Quiz = ({ questions, path }) => {
 
   const currentQuestion = questions[activeQuestionIndex];
 
-  if(questions.length === userAnswer.length){
+  if(questions.length !== userAnswer.length){
     navigate(`${path}/summary`)
   }
   console.log(userAnswer);
