@@ -14,10 +14,33 @@ html{
 
 progress {
     width: 100%;
-    background-color: black;
-    color: red;
+    background-color: rgb(6, 6, 95);
+    border-radius:50px;
+    padding:3px;
+
+}
+progress::-webkit-progress-bar{
+    background-color: rgb(6, 6, 95);
+}
+progress::-webkit-progress-value{
+    background-color: #e0e2e9;
+    border-radius: 50px;
 }
 
-progress::-moz-progress-bar{
-    background-color: red;
+
+progress.active , progress.active::-webkit-progress-bar{
+    background-color: rgb(254, 254, 255);
+}
+
+progress::-moz-progress-bar {
+    background-color: #e0e2e9;
+    border-radius: 50px;
+}
+
+progress.active::-moz-progress-bar {
+    background-color: rgb(8, 2, 99);
+}
+
+progress.active::-webkit-progress-value{
+    background-color: rgb(8, 2, 99);
 }

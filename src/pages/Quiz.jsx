@@ -22,7 +22,6 @@ const languageMap = {
 const QuizPage = () => {
   const params = useParams();
   const questions = useLoaderData();
-  console.log(questions, 'from loaderDAta');
 
   return (
     <Suspense fallback={<p className="text-center">loading</p>}>
@@ -41,15 +40,12 @@ const QuizPage = () => {
 export default QuizPage;
 
 export async function loader({ params }) {
-  console.log(params, 'from loader');
 
   if (
     params.programmingID &&
     languageMap[params.programmingID]
   ) {
     const module = await languageMap[params.programmingID]();
-    console.log('from loader');
-    console.log(module.default);
 
     return module.default;
   }
