@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import  { useState } from 'react';
-import ProgressBar from './ProgressBar';
-=======
 import {useState} from 'react'
->>>>>>> experment
 import Answer from './Answer';
 import ProgressBar from './ProgressBar';
 
