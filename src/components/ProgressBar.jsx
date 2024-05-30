@@ -1,40 +1,32 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react';
 
-const ProgressBar = ({timer, onSkip }) => {
-    const [remainingTime, setRemainingTime] = useState(timer);
-   
-   
-    useEffect(()=>{
-        const intervalTimer = setInterval(()=>{
-           setRemainingTime(prev => prev - 100)
+const ProgressBar = ({ timer, onSkip }) => {
+  const [remainingTime, setRemainingTime] = useState(timer);
 
-        }, 100);
+  useEffect(() => {
+    const intervalTimer = setInterval(() => {
+      setRemainingTime(prev => prev - 100);
+    }, 100);
 
-        return ()=>{
-            console.log('CLEAR INTERVAL');
-            clearInterval(intervalTimer)
-          
-        }
-    },[])
+    return () => {
+      console.log('CLEAR INTERVAL');
+      clearInterval(intervalTimer);
+    };
+  }, []);
 
-    useEffect(()=>{
-        console.log('SETTING TIMEOUT');
-        const timeOut = setTimeout(()=>{
-            onSkip();
-        }, timer)
+  useEffect(() => {
+    console.log('SETTING TIMEOUT');
+    const timeOut = setTimeout(() => {
+      onSkip();
+    }, timer);
 
-        return ()=>{
-            console.log('CLEAR TIMEOUT');
-            clearTimeout(timeOut)
-        }
-    },[timer, onSkip])
-    
+    return () => {
+      console.log('CLEAR TIMEOUT');
+      clearTimeout(timeOut);
+    };
+  }, [timer, onSkip]);
 
-  
+  return <progress value={remainingTime} max={timer} />;
+};
 
-  return (
-    <progress  value={remainingTime} max={timer}   />
-)
-}
-
-export default ProgressBar
+export default ProgressBar;
