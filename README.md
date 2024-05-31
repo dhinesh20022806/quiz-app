@@ -69,11 +69,4 @@ Start the server
 If you have any feedback, please reach out to us at dhinesh20022806@gmail.com
 
 
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  npm run test
-```
 
