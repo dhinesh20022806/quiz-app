@@ -44,3 +44,9 @@ progress.active::-moz-progress-bar {
 progress.active::-webkit-progress-value{
     background-color: rgb(8, 2, 99);
 }
+
+@media (max-width: 400px){
+    html{
+        font-size: 8px;
+    }
+}

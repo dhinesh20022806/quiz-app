@@ -12,7 +12,7 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer, questions}) =>
         isCorrect:null,
       })
 
-      let timer = 10 * 1000;
+      let timer = 15 * 1000;
 
       const handleAnswer = answer =>{
         setAnswer({
@@ -34,22 +34,22 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer, questions}) =>
 
               handleUserAnswer(answer)
               
-            }, 8 * 1000)
+            }, 1 * 1000)
            
       
       
-          },5 * 1000)
+          },2 * 1000)
         
       }
 
       let answerState = '';
 
   if(answer.selectedAnswer){
-    timer = 5 * 1000;
+    timer = 2 * 1000;
     answerState = 'selected'
   }
   if(answer.selectedAnswer && answer.isCorrect !== null){
-    timer = 8 * 1000;
+    timer = 1 * 1000;
     answerState = answer.isCorrect ? 'correct' : 'wrong'
   }
 
@@ -78,7 +78,7 @@ const Question = ({handleSkip,currentQuestion , handleUserAnswer, questions}) =>
      
       <div className='flex justify-center items-center   '>
       <p className=' text-white  bg-blue-950 px-6 py-4 rounded-lg ' >
-          {userAnswer.length} / {questions.length}
+          {userAnswer.length + 1} / {questions.length}
         </p>
       </div>
 

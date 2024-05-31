@@ -1,3 +1,4 @@
+import Footer from '../components/Footer';
 import ProgrammingBox from '../components/ProgrammingBox';
 const { programmingLanguages } = await import('../languageData');
 
@@ -5,7 +6,7 @@ const HomePage = () => {
   return (
     <>
       <div className="text-center ">
-        <p>
+        <p className='text-3xl capitalize'>
           this is common interview question are there each
           language contains 60 question . let's test your level
         </p>
@@ -18,6 +19,7 @@ const HomePage = () => {
           );
         })}
       </div>
+      
     </>
   );
 };

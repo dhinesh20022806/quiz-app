@@ -6,6 +6,7 @@ import {
   json,
 } from 'react-router-dom';
 import Quiz from '../components/Quiz';
+import Footer from '../components/Footer';
 
 const languageMap = {
   nodejs: () => import('../questions/nodejs_questions'),
@@ -25,7 +26,8 @@ const QuizPage = () => {
   console.log(questions);
 
   return (
-    <Suspense fallback={<p className="text-center">loading</p>}>
+   <>
+     <Suspense fallback={<p className="text-center">loading</p>}>
       <Await resolve={questions}>
         {questions => (
           <Quiz
@@ -34,7 +36,10 @@ const QuizPage = () => {
           />
         )}
       </Await>
+    
     </Suspense>
+    
+   </>
   );
 };
 

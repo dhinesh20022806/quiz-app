@@ -5,7 +5,9 @@ const SummaryPage = () => {
   const questions = useRouteLoaderData('question-programmingLanguage');
   console.log(questions);
   return (
-   <Summary questions={questions}/>
+  <>
+     <Summary questions={questions}/>
+  </>
   )
 }
 
