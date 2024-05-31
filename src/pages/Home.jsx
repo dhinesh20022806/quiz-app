@@ -7,8 +7,7 @@ const HomePage = () => {
     <>
       <div className="text-center ">
         <p className='text-3xl capitalize'>
-          this is common interview question are there each
-          language contains 60 question . let's test your level
+        All Question And Answer taken From ChatGPT, It May Be Incorrect. But It's Boost Your Knowledge
         </p>
       </div>
 
