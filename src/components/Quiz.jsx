@@ -20,14 +20,14 @@ const Quiz = ({ questions, path }) => {
   const currentQuestion = questions[activeQuestionIndex];
 
   if(questions.length === userAnswer.length){
-    navigate(`${path}/summary`)
+    navigate(`/${path}/summary`)
   }
   console.log(userAnswer);
 
   console.log('%cparent re rendering' , "color:red; border: 1px solid red;");
   return (
    <>
-     <div className="w-3/6 min-w-[350px]  mx-auto bg-[#4169e1] h-[55rem] p-5 space-y-14 rounded-3xl text-[#dfdcdc]  ">
+     <div className="w-3/6 min-w-[350px]  mx-auto bg-[#4169e1] min-h-[55rem] p-5 space-y-14 rounded-3xl text-[#dfdcdc]  ">
       <Question 
       key={activeQuestionIndex}
       handleSkip={handleSkip}

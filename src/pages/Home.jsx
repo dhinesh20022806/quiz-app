@@ -1,12 +1,13 @@
 import Footer from '../components/Footer';
 import ProgrammingBox from '../components/ProgrammingBox';
-const { programmingLanguages } = await import('../languageData');
+
+import { programmingLanguages } from '../languageData';
 
 const HomePage = () => {
   return (
     <>
       <div className="text-center ">
-        <p className='text-3xl capitalize'>
+        <p className='w-[80%] text-3xl mx-auto overflow-hidden '>
         All Question And Answer taken From ChatGPT, It May Be Incorrect. But It's Boost Your Knowledge
         </p>
       </div>
